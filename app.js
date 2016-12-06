@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override');
-var flash = require('connect-flash');s
+var flash = require('connect-flash');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
