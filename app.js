@@ -25,8 +25,9 @@ if (app.get('env') === 'development') {
 }
 app.locals.moment = require('moment');
 
-// mongodb connect 몽구스 주소 바꾸기내꺼로!
-mongoose.connect('mongodb://user:asdasd@ds041394.mongolab.com:41394/nodewp');
+// mongodb connect
+// 아래 DB접속 주소는 꼭 자기 것으로 바꾸세요!mongodb://<dbuser>:<dbpassword>@ds147377.mlab.com:47377/hye
+mongoose.connect('mongodb://HyeyeongKoo:qfe542803@ds147377.mlab.com:47377/hye');
 mongoose.connection.on('error', console.log);
 
 // uncomment after placing your favicon in /public
@@ -58,7 +59,8 @@ app.use(function(req, res, next) {
 
 configAuth(passport);
 
-app.use('/', routes);
+//app.use('/', routes);
+app.use('/', index);
 app.use('/users', users);
 routeAuth(app, passport);
 
