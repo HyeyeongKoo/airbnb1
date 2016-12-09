@@ -14,6 +14,7 @@ var configAuth = require('./config/auth');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var routeAuth = require('./routes/auth');
+var search = require('./routes/search');
 
 var app = express();
 
