@@ -11,11 +11,10 @@ var mongoose   = require('mongoose');
 var passport = require('passport');
 var configAuth = require('./config/auth');
 
-var index = require('./routes/index');
+var routes = require('./routes/index');
 var users = require('./routes/users');
 var routeAuth = require('./routes/auth');
 var search = require('./routes/search');
-
 var app = express();
 
 // view engine setup
@@ -27,7 +26,6 @@ if (app.get('env') === 'development') {
 app.locals.moment = require('moment');
 
 // mongodb connect
-// 아래 DB접속 주소는 꼭 자기 것으로 바꾸세요!mongodb://<dbuser>:<dbpassword>@ds147377.mlab.com:47377/hye
 mongoose.connect('mongodb://HyeyeongKoo:qfe542803@ds147377.mlab.com:47377/hye');
 mongoose.connection.on('error', console.log);
 
@@ -48,6 +46,7 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(path.join(__dirname, '/bower_components')));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -60,8 +59,7 @@ app.use(function(req, res, next) {
 
 configAuth(passport);
 
-//app.use('/', routes);
-app.use('/', index);
+app.use('/', routes);
 app.use('/users', users);
 routeAuth(app, passport);
 
@@ -72,7 +70,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handler
+// error handlers
 
 // development error handler
 // will print stacktrace
@@ -95,5 +93,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 module.exports = app;

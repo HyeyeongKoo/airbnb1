@@ -13,13 +13,16 @@
         li
           a(href='/todos') Todo List
         li
-          a(href='/users') Users
+          a(href='/users') 사용자
       ul.nav.navbar-nav.navbar-right
-        li
-          a(href='/signin') 호스팅 하기
-        li
-          a(href='/users/new') 회원가입
-        li
-          a(href='/signin') 로그인
+        if (currentUser) 
+          li
+            a(href='/users/#{currentUser._id}') 내정보
+          li
+            a(href='/signout') 로그아웃
+        else
+          li
+            a(href='/signin') 로그인
+          li
+            a(href='/users/new') 회원가입
           
-       
