@@ -7,6 +7,20 @@ block hero-unit
 
 block content
   .container
+  hr
+  .form
+    input.form-control(type='text', id='q', size=20, placeholder='위치')
+    i.fa.fa-spin.fa-spinner
+    ul.suggest-box
+
+    input.form-control(type='text', id='d', size=20, placeholder='날짜')
+    i.fa.fa-spin.fa-spinner
+    ul.suggest-box
+    
+    input.form-control(type='text', id='p', size=20, placeholder='인원')
+    i.fa.fa-spin.fa-spinner
+    ul.suggest-box
+
     .row
       .col-md-6
         h3 서비스 목적
@@ -18,4 +32,4 @@ block content
           li 할 일 기록
           li 기록 내용: 분류, 내용, 중요도, deadline
           li 완료된 일 체크
-  
+   script(src='/javascripts/autocomplete.js')
