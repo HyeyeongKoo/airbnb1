@@ -20,6 +20,7 @@ module.exports = function(passport) {
   }, function(req, email, password, done) {
     process.nextTick(function () {
       User.findOne({email: email}, function(err, user) {
+
         if (err) {
           return done(err);
         }
@@ -33,6 +34,7 @@ module.exports = function(passport) {
         }
 
         return done(null, user, req.flash('success', '로그인되었습니다.'));
+      
       });
     });
   }));
