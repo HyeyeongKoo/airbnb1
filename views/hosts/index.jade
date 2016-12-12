@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header Room Information(Host)
+    
+   
+    table.table.table-bordered
+      thead
+        tr
+          th 도시
+          th 제목
+          th 이용요금(1박기준)
+          th 최대인원
+          th 조회수
+          th
+      tbody
+        each host in hosts
+          tr
+            td= host.city
+            td
+              a(href='/hosts/#{host.id}')= host.title            
+            td= host.price
+            td= host.people
+            td= host.read
+            td
+              a.btn.btn-xs.btn-default(href='/hosts/#{host.id}/edit') 수정
+              | 
+              a.btn.btn-xs.btn-default(data-id=host.id, class='delete') 삭제
+
+    a.btn.btn-primary(href='/hosts/new') 글쓰기
+
+
+    form#deleteForm(style='display:none', method="POST")
+            
+    script(type='text/javascript').
+      $(".delete").click(function(e) {
+        var id = $(e.currentTarget).data('id');
+        if (confirm('정말 삭제하시겠습니까?')) {
+          $("#deleteForm").attr('action', "/hosts/" + id + "?_method=DELETE").submit();          
+        }
+        return false;
+      });
+            

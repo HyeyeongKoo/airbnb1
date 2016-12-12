@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header= host.title
+    p
+      b by #{host.user}
+      | 
+      span at #{moment(host.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
+      | 
+      | (조회수 #{host.read})
+
+    이용요금(1박기준) 
+    p.well(style='white-space:pre;')= host.price
+    
+    최대 인원
+    p.well(style='white-space:pre;')= host.people
+
+    소개
+    p.well(style='white-space:pre;')= host.intro
+    
+    a.btn.btn-default(href='/hosts') 목록

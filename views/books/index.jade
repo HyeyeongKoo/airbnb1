@@ -13,7 +13,7 @@ block content
           th 이용요금(1박기준)
           th 최대인원
           th 조회수
-          th
+          
       tbody
         each book in books
           tr
@@ -23,22 +23,4 @@ block content
             td= book.price
             td= book.people
             td= book.read
-            td
-              a.btn.btn-xs.btn-default(href='/books/#{book.id}/edit') 수정
-              | 
-              a.btn.btn-xs.btn-default(data-id=book.id, class='delete') 삭제
-
-    a.btn.btn-primary(href='/books/new') 글쓰기
-
-
-    form#deleteForm(style='display:none', method="POST")
-            
-    script(type='text/javascript').
-      $(".delete").click(function(e) {
-        var id = $(e.currentTarget).data('id');
-        if (confirm('정말 삭제하시겠습니까?')) {
-          $("#deleteForm").attr('action', "/books/" + id + "?_method=DELETE").submit();          
-        }
-        return false;
-      });
             
