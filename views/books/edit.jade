@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  .container
+    if book.id
+      h1.page-header 글수정
+    else
+      h1.page-header 글쓰기
+
+    form(action = (book.id) ? "/books/#{book.id}?_method=PUT" : "/books", method='POST')
+      .form-group
+        label(for='email') 도시
+        input.form-control(type='text', id='city', name='city', placeholder='City', value=book.city)
+      .form-group
+        label(for='title') 제목
+        input.form-control(type='text', id='title', name='title', placeholder='title', value=book.title)
+      .form-group
+        label(for='price') 이용요금(1박기준)
+        input.form-control(type='text', id='price', name='price', placeholder='price', value=book.price)
+      .form-group
+        label(for='title') 최대인원
+        input.form-control(type='text', id='people', name='people', placeholder='people', value=book.people)
+      .form-group
+        label(for='intro') 소개
+        textarea.form-control(id='intro', rows='10', name='intro', placeholder='Intro')= book.intro
+
+      div.form-actions
+        a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+        | 
+        button.btn.btn-primary(type='submit') 완료
