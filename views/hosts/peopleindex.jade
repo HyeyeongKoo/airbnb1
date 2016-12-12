@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header Room Information
+
+    table.table.table-bordered
+      thead
+        tr
+          th 도시
+          th 주소
+          th 제목
+          th 이용요금(1박기준)
+          th 편의시설
+          th 이용규칙
+          th 조회수
+          
+      tbody
+        each host in hosts
+          tr
+            td= host.city
+            td= host.address
+            td
+              a(href='/hosts/#{host.id}')= host.title            
+            td= host.price
+            td= host.convenient
+            td= host.rule
+            td= host.read
+

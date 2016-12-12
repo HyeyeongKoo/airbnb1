@@ -10,11 +10,20 @@ block content
       | 
       | (조회수 #{host.read})
 
+    도시 
+    p.well(style='white-space:pre;')= host.city
+
+    주소
+    p.well(style='white-space:pre;')= host.address
+
     이용요금(1박기준) 
     p.well(style='white-space:pre;')= host.price
+
+    편의시설
+    p.well(style='white-space:pre;')= host.convenient
     
-    최대 인원
-    p.well(style='white-space:pre;')= host.people
+    이용규칙
+    p.well(style='white-space:pre;')= host.rule
 
     소개
     p.well(style='white-space:pre;')= host.intro

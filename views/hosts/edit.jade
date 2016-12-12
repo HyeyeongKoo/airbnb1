@@ -12,14 +12,20 @@ block content
         label(for='email') 도시
         input.form-control(type='text', id='city', name='city', placeholder='City', value=host.city)
       .form-group
+        label(for='address') 주소
+        input.form-control(type='text', id='address', name='address', placeholder='Address', value=host.address)
+      .form-group
         label(for='title') 제목
-        input.form-control(type='text', id='title', name='title', placeholder='title', value=host.title)
+        input.form-control(type='text', id='title', name='title', placeholder='Title', value=host.title)
       .form-group
         label(for='price') 이용요금(1박기준)
-        input.form-control(type='text', id='price', name='price', placeholder='price', value=host.price)
+        input.form-control(type='text', id='price', name='price', placeholder='Price', value=host.price)
       .form-group
-        label(for='title') 최대인원
-        input.form-control(type='text', id='people', name='people', placeholder='people', value=host.people)
+        label(for='convenient') 편의시설
+        textarea.form-control(id='convenient', rows='5', name='convenient', placeholder='Convenient')=host.convenient
+       .form-group
+        label(for='rule') 이용규칙
+        textarea.form-control(id='rule', rows='5', name='rule', placeholder='Rule')=host.rule
       .form-group
         label(for='intro') 소개
         textarea.form-control(id='intro', rows='10', name='intro', placeholder='Intro')= host.intro

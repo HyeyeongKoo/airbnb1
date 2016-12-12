@@ -13,9 +13,8 @@ var configAuth = require('./config/auth');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var books = require('./routes/books');
+var peoples = require('./routes/peoples');
 var hosts = require('./routes/hosts');
-var selects = require('./routes/selects');
 var routeAuth = require('./routes/auth');
 var search = require('./routes/search');
 var app = express();
@@ -64,8 +63,7 @@ configAuth(passport);
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/selects', selects);
-app.use('/books', books);
+app.use('/peoples', peoples);
 app.use('/hosts', hosts);
 routeAuth(app, passport);
 
