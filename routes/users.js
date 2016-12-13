@@ -69,7 +69,7 @@ router.put('/:id', function(req, res, next) {
     req.flash('danger', err);
     return res.redirect('back');
   }
-
+  console.log(req.body);
   User.findById({_id: req.params.id}, function(err, user) {
     if (err) {
       return next(err);
@@ -78,8 +78,7 @@ router.put('/:id', function(req, res, next) {
       req.flash('danger', '존재하지 않는 사용자입니다.');
       return res.redirect('back');
     }
-
-    if (user.password !== req.body.current_password) {
+    if (!user.validatePassword(req.body.current_password)) {
       req.flash('danger', '현재 비밀번호가 일치하지 않습니다.');
       return res.redirect('back');
     }
